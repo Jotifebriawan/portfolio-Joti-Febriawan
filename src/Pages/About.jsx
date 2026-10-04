@@ -27,51 +27,96 @@ const Header = memo(() => (
   </div>
 ));
 
-const ProfileImage = memo(() => (
+const ProfileImage = memo(() => {
+  const [lanyardSway, setLanyardSway] = useState(0);
+
+  return (
   <div className="flex justify-end items-center sm:p-12 sm:py-0 sm:pb-0 p-0 py-2 pb-2">
     <div 
       className="relative isolate group" 
       data-aos="zoom-in-up"
       data-aos-duration="1200"
     >
-      <div
-        aria-hidden="true"
-        className="absolute -inset-[5px] rounded-[1.4rem] bg-gradient-to-br from-cyan-300 via-indigo-500 to-fuchsia-500 opacity-80 blur-[1px] transition-transform duration-700 motion-safe:group-hover:rotate-2"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute -inset-3 rounded-[1.7rem] border border-white/15 transition-transform duration-700 motion-safe:group-hover:-rotate-6"
-      />
-      <div
-        className="relative aspect-[3/4] w-[min(68vw,16rem)] overflow-hidden rounded-[1.15rem] border border-white/20 bg-slate-950 shadow-[0_18px_60px_rgba(49,46,129,0.35)] transition-transform duration-500 motion-safe:group-hover:-translate-y-1 sm:w-64 md:w-72"
-        onPointerMove={(event) => {
-          const bounds = event.currentTarget.getBoundingClientRect();
-          event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - bounds.left}px`);
-          event.currentTarget.style.setProperty("--pointer-y", `${event.clientY - bounds.top}px`);
-        }}
-      >
-        <img
-          src="/foto.jpeg"
-          alt="Joti Febriawan"
-          className="h-full w-full scale-110 object-cover object-[center_45%] transition-transform duration-700 motion-safe:group-hover:scale-[1.55]"
-          loading="lazy"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#090513]/35 via-transparent to-white/10" />
+      <div className="relative profile-float">
+        <div aria-hidden="true" className="profile-lanyard absolute -top-[min(28vh,12rem)] left-1/2 z-0 h-[min(28vh,12rem)] w-16 -translate-x-1/2">
+          <svg className="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 64 200" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="profile-lanyard-gradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#cffafe" stopOpacity="0.9" />
+                <stop offset="55%" stopColor="#a5b4fc" />
+                <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.8" />
+              </linearGradient>
+            </defs>
+            <path
+              d={`M 31 14 C ${31 + lanyardSway * 0.3} 65, ${21 + lanyardSway} 145, 20 200`}
+              fill="none"
+              stroke="url(#profile-lanyard-gradient)"
+              strokeWidth="5"
+              strokeLinecap="round"
+              style={{ filter: "drop-shadow(0 0 5px rgba(129,140,248,0.65))" }}
+            />
+            <path
+              d={`M 33 14 C ${33 + lanyardSway * 0.3} 65, ${43 + lanyardSway} 145, 44 200`}
+              fill="none"
+              stroke="url(#profile-lanyard-gradient)"
+              strokeWidth="5"
+              strokeLinecap="round"
+              style={{ filter: "drop-shadow(0 0 5px rgba(129,140,248,0.65))" }}
+            />
+          </svg>
+          <div className="absolute left-1/2 top-0 z-30 flex -translate-x-1/2 flex-col items-center">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/70 bg-gradient-to-br from-slate-700 via-indigo-950 to-slate-950 shadow-[0_0_18px_rgba(129,140,248,0.55)]">
+              <div className="h-3 w-3 rounded-full border-2 border-cyan-100 bg-indigo-900 shadow-[0_0_10px_rgba(165,243,252,0.8)]" />
+            </div>
+            <div className="-mt-1 h-4 w-[4px] rounded-full bg-gradient-to-b from-cyan-100 to-indigo-400 shadow-[0_0_8px_rgba(165,243,252,0.7)]" />
+          </div>
+          <div className="absolute bottom-0 left-1/2 z-20 h-5 w-8 -translate-x-1/2 translate-y-1/2 rounded-md border border-white/50 bg-gradient-to-r from-cyan-200 to-violet-500 shadow-[0_0_14px_rgba(129,140,248,0.45)]" />
+        </div>
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-          style={{
-            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1.2px, transparent 1.8px)",
-            backgroundSize: "14px 14px",
-            maskImage: "radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), black 0, transparent 112px)",
-            WebkitMaskImage: "radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), black 0, transparent 112px)",
-          }}
+          className="absolute -inset-[5px] rounded-[1.4rem] bg-gradient-to-br from-cyan-300 via-indigo-500 to-fuchsia-500 opacity-80 blur-[1px] transition-transform duration-700 motion-safe:group-hover:rotate-2"
         />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-2 rounded-[0.85rem] border border-white/25" />
+        <div
+          aria-hidden="true"
+          className="absolute -inset-3 rounded-[1.7rem] border border-white/15 transition-transform duration-700 motion-safe:group-hover:-rotate-6"
+        />
+        <div
+          className="relative aspect-[3/4] w-[min(68vw,16rem)] overflow-hidden rounded-[1.15rem] border border-white/20 bg-slate-950 shadow-[0_18px_60px_rgba(49,46,129,0.35)] transition-transform duration-500 motion-safe:group-hover:-translate-y-1 sm:w-64 md:w-72"
+          onPointerMove={(event) => {
+            const bounds = event.currentTarget.getBoundingClientRect();
+            event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - bounds.left}px`);
+            event.currentTarget.style.setProperty("--pointer-y", `${event.clientY - bounds.top}px`);
+            const horizontalPosition = (event.clientX - bounds.left) / bounds.width - 0.5;
+            setLanyardSway(Math.round(Math.max(-16, Math.min(16, horizontalPosition * 32))));
+          }}
+          onPointerLeave={(event) => {
+            setLanyardSway(0);
+          }}
+        >
+          <img
+            src="/foto.jpeg"
+            alt="Joti Febriawan"
+            className="h-full w-full scale-110 object-cover object-[center_45%] transition-transform duration-700 motion-safe:group-hover:scale-[1.55]"
+            loading="lazy"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#090513]/35 via-transparent to-white/10" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+            style={{
+              backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1.2px, transparent 1.8px)",
+              backgroundSize: "14px 14px",
+              maskImage: "radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), black 0, transparent 112px)",
+              WebkitMaskImage: "radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), black 0, transparent 112px)",
+            }}
+          />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-2 rounded-[0.85rem] border border-white/25" />
+        </div>
       </div>
     </div>
   </div>
-));
+  );
+});
 
 const StatCard = memo(({ icon: Icon, color, value, label, description, animation }) => (
   <div data-aos={animation} data-aos-duration={1300} className="relative group">
@@ -303,6 +348,18 @@ const AboutPage = () => {
       </div>
 
       <style jsx>{`
+        .profile-float {
+          animation: profile-float 4.5s ease-in-out infinite;
+          transform-origin: center top;
+        }
+        @keyframes profile-float {
+          0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+          50% { transform: translate3d(0, -8px, 0) rotate(0.5deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .profile-float { animation: none; }
+          .profile-lanyard { transition: none; }
+        }
         @keyframes float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-20px); }
