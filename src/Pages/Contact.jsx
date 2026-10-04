@@ -45,27 +45,26 @@ const ContactPage = () => {
 
     try {
       // Ganti dengan email Anda di FormSubmit
-      const formSubmitUrl = 'https://formsubmit.co/jotifebriawan07@gmail.com';
-      
-      // Siapkan data form untuk FormSubmit
-      const submitData = new FormData();
-      submitData.append('name', formData.name);
-      submitData.append('email', formData.email);
-      submitData.append('message', formData.message);
-      submitData.append('_subject', 'Pesan Baru dari Website Portfolio');
-      submitData.append('_captcha', 'false'); // Nonaktifkan captcha
-      submitData.append('_template', 'table'); // Format email sebagai tabel
+      const formSubmitUrl = 'https://formsubmit.co/ajax/jotifebriawan07@gmail.com';
 
-      await axios.post(formSubmitUrl, submitData, {
+      await axios.post(formSubmitUrl, {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        _subject: 'Pesan Baru dari Website Portfolio',
+        _captcha: false,
+        _template: 'table',
+      }, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
       });
 
      
       Swal.fire({
         title: 'Berhasil!',
-        text: 'Pesan Anda telah berhasil terkirim!',
+        text: 'Permintaan pesan berhasil dikirim. Jika ini pertama kali, konfirmasi alamat email melalui pesan dari FormSubmit.',
         icon: 'success',
         confirmButtonColor: '#6366f1',
         timer: 2000,
@@ -79,29 +78,12 @@ const ContactPage = () => {
       });
 
     } catch (error) {
-      if (error.request && error.request.status === 0) {
-        Swal.fire({
-          title: 'Berhasil!',
-          text: 'Pesan Anda telah berhasil terkirim!',
-          icon: 'success',
-          confirmButtonColor: '#6366f1',
-          timer: 2000,
-          timerProgressBar: true
-        });
-
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-        });
-      } else {
-        Swal.fire({
-          title: 'Gagal!',
-          text: 'Terjadi kesalahan. Silakan coba lagi nanti.',
-          icon: 'error',
-          confirmButtonColor: '#6366f1'
-        });
-      }
+      Swal.fire({
+        title: 'Gagal!',
+        text: 'Pesan belum terkirim. Periksa koneksi lalu coba lagi.',
+        icon: 'error',
+        confirmButtonColor: '#6366f1'
+      });
     } finally {
       setIsSubmitting(false);
     }
