@@ -94,7 +94,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
             <Globe className="h-4 w-4" strokeWidth={2.2} />
           </div>
           <span className="text-xl font-medium tracking-[-0.05em] text-white/90 sm:text-2xl md:text-[2rem]">
-            <TypewriterEffect text="fbrwnn.com" />
+            <TypewriterEffect text="portfolio-joti-febriawan.vercel.app" />
           </span>
         </motion.div>
       </div>
