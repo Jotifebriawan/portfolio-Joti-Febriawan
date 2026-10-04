@@ -64,7 +64,7 @@ const ContactPage = () => {
      
       Swal.fire({
         title: 'Berhasil!',
-        text: 'Permintaan pesan berhasil dikirim. Jika ini pertama kali, konfirmasi alamat email melalui pesan dari FormSubmit.',
+        text: 'Permintaan Pesan Telah Berhasil di Kirim, Terimakasih Atas Kunjungan Anda. ❤️',
         icon: 'success',
         confirmButtonColor: '#6366f1',
         timer: 2000,
