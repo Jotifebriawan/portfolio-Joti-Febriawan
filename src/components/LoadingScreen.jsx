@@ -14,7 +14,7 @@ const TypewriterEffect = ({ text }) => {
       } else {
         clearInterval(timer);
       }
-    }, 170);
+    }, 120);
 
     return () => clearInterval(timer);
   }, [text]);
@@ -31,7 +31,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const timer = window.setTimeout(() => onLoadingComplete?.(), 3200);
+    const timer = window.setTimeout(() => onLoadingComplete?.(), 7000);
     return () => window.clearTimeout(timer);
   }, [onLoadingComplete]);
 
