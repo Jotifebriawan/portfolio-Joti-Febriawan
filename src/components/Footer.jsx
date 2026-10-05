@@ -28,7 +28,7 @@ const Footer = () => {
         <div className="flex flex-wrap items-center justify-center gap-x-2 pb-4 text-center text-sm text-gray-500 dark:text-gray-400">
           <span>
             © {currentYear}{" "}
-            <a href="https://ekizr.com" className="hover:underline">
+            <a href="https://portfolio-joti-febriawan.vercel.app" className="hover:underline">
               Joti Febriawan
             </a>
             . All Rights Reserved.
