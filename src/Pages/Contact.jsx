@@ -9,7 +9,7 @@ import axios from "axios";
 
 const CONTACT_INFO = {
   email: "jotifebriawan07@gmail.com",
-  whatsappNumber: "087849095310",
+  whatsappNumber: "6287849095310",
 };
 
 const ContactPage = () => {
